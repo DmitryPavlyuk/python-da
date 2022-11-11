@@ -14652,6 +14652,9 @@ div.jp-OutputPrompt {
 .jp-InputPrompt {
   flex: none;
 }
+.jp-RenderedMarkdown table thead tr, .dataframe thead tr{
+    background-color: lightgray;
+}
 </style>
 
 </head>
@@ -14717,9 +14720,9 @@ built on top of the Python programming language.</p>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Requirement already satisfied: pandas in c:\users\dmitry\anaconda3\lib\site-packages (1.4.2)
-Requirement already satisfied: numpy&gt;=1.18.5 in c:\users\dmitry\anaconda3\lib\site-packages (from pandas) (1.21.5)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\dmitry\anaconda3\lib\site-packages (from pandas) (2021.3)
 Requirement already satisfied: python-dateutil&gt;=2.8.1 in c:\users\dmitry\anaconda3\lib\site-packages (from pandas) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\dmitry\anaconda3\lib\site-packages (from pandas) (2021.3)
+Requirement already satisfied: numpy&gt;=1.18.5 in c:\users\dmitry\anaconda3\lib\site-packages (from pandas) (1.21.5)
 Requirement already satisfied: six&gt;=1.5 in c:\users\dmitry\anaconda3\lib\site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas) (1.16.0)
 </pre>
 </div>
@@ -15119,56 +15122,56 @@ URL: <a href="https://www.kaggle.com/competitions/bike-sharing-demand/overview/d
       <th>0</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Pārdodu tikko ievestu BMW E46 M-pack 330d Face...</td>
-      <td>330</td>
-      <td>2003</td>
-      <td>3.0D</td>
-      <td>339 tūkst.</td>
-      <td>1,899 €</td>
+      <td>Pārdod BMW 318 F31 Sport-line ar 2.0 105kw dīz...</td>
+      <td>320</td>
+      <td>2013</td>
+      <td>2.0D</td>
+      <td>238 tūkst.</td>
+      <td>10,333 €</td>
     </tr>
     <tr>
       <th>1</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Jauna TA, jaunas m+s riepas. Rūsa ir tek bāka ...</td>
-      <td>725</td>
-      <td>1998</td>
-      <td>2.5D</td>
-      <td>385 tūkst.</td>
-      <td>1,700 €</td>
+      <td>Bmw e61 173kw/235zs Auto labā tehniskā gan viz...</td>
+      <td>530</td>
+      <td>2007</td>
+      <td>3.0D</td>
+      <td>307 tūkst.</td>
+      <td>4,700 €</td>
     </tr>
     <tr>
       <th>2</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>BMW F10 535d 230kW/313zs, 2012.G, M+S, Bagātīg...</td>
-      <td>535</td>
-      <td>2012</td>
-      <td>3.0D</td>
-      <td>-</td>
-      <td>15,700 €</td>
+      <td>BMW X4 Xdrive 25D ar visām iespējamām ekstrām,...</td>
+      <td>X4</td>
+      <td>2018</td>
+      <td>2.5D</td>
+      <td>51 tūkst.</td>
+      <td>45,500 €</td>
     </tr>
     <tr>
       <th>3</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Tikko atvests , viss strādā rūc un brauc, apak...</td>
-      <td>316</td>
-      <td>1990</td>
-      <td>1.6</td>
-      <td>185 tūkst.</td>
-      <td>3,799 €</td>
+      <td>Izpārdodu Bmw e39 , 2, 5 dīzelis , labs tehnis...</td>
+      <td>525</td>
+      <td>2003</td>
+      <td>2.5D</td>
+      <td>407 tūkst.</td>
+      <td>1,599 €</td>
     </tr>
     <tr>
       <th>4</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Продаётся бмв е46 110кв 2.0 дизель, стоит чип ...</td>
-      <td>320</td>
-      <td>2002</td>
-      <td>2.0D</td>
-      <td>-</td>
-      <td>1,800 €</td>
+      <td>Pārdodu BMW X3 labā stāvoklī ar stūri labajā p...</td>
+      <td>X3</td>
+      <td>2005</td>
+      <td>3.0</td>
+      <td>150 tūkst.</td>
+      <td>2,500 €</td>
     </tr>
   </tbody>
 </table>
@@ -16665,7 +16668,8 @@ dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -16687,14 +16691,126 @@ dtype: object</pre>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>datetime      01/01/2011 01:00
-season                  spring
-holiday                      0
-workingday                   0
-weather                      1
-Name: 1, dtype: object</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>datetime</th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+    </tr>
+    <tr>
+      <th>count</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>01/01/2011 04:00</td>
+      <td>spring</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>75</td>
+      <td>0.0000</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01/01/2011 05:00</td>
+      <td>spring</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>9.84</td>
+      <td>12.880</td>
+      <td>75</td>
+      <td>6.0032</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>02/01/2011 07:00</td>
+      <td>spring</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>16.40</td>
+      <td>20.455</td>
+      <td>76</td>
+      <td>12.9980</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>03/01/2011 04:00</td>
+      <td>spring</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6.56</td>
+      <td>6.820</td>
+      <td>47</td>
+      <td>26.0027</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>04/01/2011 02:00</td>
+      <td>spring</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5.74</td>
+      <td>7.575</td>
+      <td>63</td>
+      <td>8.9981</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -16815,8 +16931,7 @@ Name: 1, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">bikes</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
-<span class="n">bikes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
 <span class="c1"># Second row</span>
 </pre></div>
 
@@ -16869,11 +16984,9 @@ Name: 1, dtype: object</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>count</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16901,7 +17014,6 @@ Name: 1, dtype: object</pre>
       <td>0.0</td>
       <td>8</td>
       <td>32</td>
-      <td>40</td>
     </tr>
   </tbody>
 </table>
@@ -16975,11 +17087,9 @@ Name: 1, dtype: object</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>count</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17007,7 +17117,6 @@ Name: 1, dtype: object</pre>
       <td>0.0000</td>
       <td>0</td>
       <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -17021,7 +17130,6 @@ Name: 1, dtype: object</pre>
       <td>75</td>
       <td>6.0032</td>
       <td>0</td>
-      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
@@ -17037,7 +17145,6 @@ Name: 1, dtype: object</pre>
       <td>12.9980</td>
       <td>0</td>
       <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -17052,7 +17159,6 @@ Name: 1, dtype: object</pre>
       <td>26.0027</td>
       <td>0</td>
       <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -17066,7 +17172,6 @@ Name: 1, dtype: object</pre>
       <td>63</td>
       <td>8.9981</td>
       <td>0</td>
-      <td>1</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -17169,11 +17274,9 @@ Name: 1, dtype: object</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>count</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17201,7 +17304,6 @@ Name: 1, dtype: object</pre>
       <td>0.0</td>
       <td>8</td>
       <td>32</td>
-      <td>40</td>
     </tr>
   </tbody>
 </table>
@@ -17338,11 +17440,9 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>count</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17370,7 +17470,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>51.9987</td>
       <td>0</td>
       <td>5</td>
-      <td>5</td>
     </tr>
     <tr>
       <th>171</th>
@@ -17385,7 +17484,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>50.0021</td>
       <td>84</td>
       <td>87</td>
-      <td>171</td>
     </tr>
     <tr>
       <th>358</th>
@@ -17400,7 +17498,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>56.9969</td>
       <td>181</td>
       <td>177</td>
-      <td>358</td>
     </tr>
     <tr>
       <th>181</th>
@@ -17415,7 +17512,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>56.9969</td>
       <td>74</td>
       <td>107</td>
-      <td>181</td>
     </tr>
   </tbody>
 </table>
@@ -17524,11 +17620,9 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>datetime</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17554,7 +17648,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>3</td>
       <td>13</td>
-      <td>16</td>
     </tr>
     <tr>
       <th>01/01/2011 01:00</th>
@@ -17568,7 +17661,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>8</td>
       <td>32</td>
-      <td>40</td>
     </tr>
     <tr>
       <th>01/01/2011 02:00</th>
@@ -17582,7 +17674,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>5</td>
       <td>27</td>
-      <td>32</td>
     </tr>
   </tbody>
 </table>
@@ -17668,11 +17759,9 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>datetime</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17698,7 +17787,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>11.0014</td>
       <td>102</td>
       <td>192</td>
-      <td>294</td>
     </tr>
     <tr>
       <th>07/07/2012 14:00</th>
@@ -17712,7 +17800,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>8.9981</td>
       <td>105</td>
       <td>203</td>
-      <td>308</td>
     </tr>
     <tr>
       <th>07/07/2012 12:00</th>
@@ -17726,7 +17813,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>23.9994</td>
       <td>124</td>
       <td>218</td>
-      <td>342</td>
     </tr>
   </tbody>
 </table>
@@ -17780,7 +17866,7 @@ Name: temp, Length: 10886, dtype: float64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">bikes</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y %H:%M&#39;</span><span class="p">)</span>
@@ -17804,7 +17890,7 @@ Name: temp, Length: 10886, dtype: float64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 
 
 
@@ -18057,7 +18143,7 @@ Name: temp, Length: 10886, dtype: float64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;atempF&quot;</span><span class="p">,</span><span class="s2">&quot;tempF&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -18079,7 +18165,7 @@ Name: temp, Length: 10886, dtype: float64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 
 
 
@@ -18113,11 +18199,9 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <th>windspeed</th>
       <th>casual</th>
       <th>registered</th>
-      <th>count</th>
     </tr>
     <tr>
       <th>count</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -18145,7 +18229,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>3</td>
       <td>13</td>
-      <td>16</td>
     </tr>
     <tr>
       <th>40</th>
@@ -18160,7 +18243,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>8</td>
       <td>32</td>
-      <td>40</td>
     </tr>
     <tr>
       <th>32</th>
@@ -18175,7 +18257,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>5</td>
       <td>27</td>
-      <td>32</td>
     </tr>
     <tr>
       <th>13</th>
@@ -18190,7 +18271,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>0.0</td>
       <td>3</td>
       <td>10</td>
-      <td>13</td>
     </tr>
     <tr>
       <th>1</th>
@@ -18204,7 +18284,6 @@ Name: temp, Length: 10886, dtype: float64</pre>
       <td>75</td>
       <td>0.0</td>
       <td>0</td>
-      <td>1</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -18249,7 +18328,8 @@ Name: temp, Length: 10886, dtype: float64</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="p">[[</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;humidity&quot;</span><span class="p">,</span> <span class="s2">&quot;windspeed&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bikes</span><span class="p">[[</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;humidity&quot;</span><span class="p">,</span> <span class="s2">&quot;windspeed&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
      </div>
